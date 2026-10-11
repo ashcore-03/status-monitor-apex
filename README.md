@@ -50,4 +50,5 @@ This project was developed as an industrial monitoring solution for extrusion pr
 
 ## Author
 
-Developed by Ash
+Developed by Aashika
+
