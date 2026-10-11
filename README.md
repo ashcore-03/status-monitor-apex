@@ -1,54 +1,59 @@
-# Status Monitor – Oracle APEX Industrial Dashboard
+# Production Status Monitor (Oracle APEX)
 
-## Overview
-Status Monitor is a real-time industrial production monitoring web application developed using Oracle APEX. The system displays live extrusion production data, machine status, shift performance, and production metrics through an interactive dashboard interface.
+A real-time operational dashboard that turns live production-line data (JSON over REST APIs) into KPIs: extrusion status, quantity produced, shift-wise throughput (KG/HR) and production history. Built for plant-floor staff on desktop and mobile.
 
-The application integrates JSON-based live data streams with Oracle RESTful APIs and PowerShell automation scripts to continuously update the dashboard without manual intervention.
+Built during my internship at Hindalco Industries (Aditya Birla Group).
 
----
+## The problem
+Production data was updated through manual entry, so dashboards lagged behind what was actually happening on the line. The goal was a dashboard that always reflects current data without anyone updating it by hand.
 
-## Features
+## KPIs and metrics tracked
+| Metric | What it shows |
+|---|---|
+| Live extrusion status | Current state of each production line |
+| Production quantity | Output tracked across the day |
+| Throughput (KG/HR) by shift | Shift-wise productivity |
+| Production history | Past output for trend review |
 
-- Real-time production monitoring
-- Live extrusion status dashboard
-- REST API integration using ORDS
-- JSON data handling and automation
-- Auto-refreshing dashboard
-- Production quantity tracking
-- Shift KG/HR monitoring
-- Production history display
-- Dark mode UI
-- Mobile-friendly web app
+## Data flow
+```
+Production data (JSON feed)
+        |
+        v
+REST API (Oracle REST Data Services)
+        |
+        v
+SQL / PL-SQL  (parse, transform, aggregate)
+        |
+        v
+Oracle APEX dashboards (auto-refresh, desktop + mobile)
 
----
+PowerShell scheduled script keeps the data refreshed
+```
 
-## Technologies Used
+## Data and SQL highlights
+- Integrated live JSON data through REST APIs using Oracle ORDS
+- Used SQL / PL-SQL to process and aggregate production data for the dashboard
+- Automated recurring data updates with scheduled PowerShell scripts, replacing manual entry
+- Designed a responsive, auto-refreshing dashboard with a dark mode UI
+- [Add one measurable detail, e.g. number of lines monitored, refresh interval, or users]
 
-- Oracle APEX
-- Oracle REST Data Services (ORDS)
-- SQL / PL-SQL
-- PowerShell
-- JSON
-- HTML / CSS / JavaScript
+## Impact
+- Removed manual data entry from the update process
+- Gave plant-floor staff live visibility of production from any device
+- [Add a real result if you have one, e.g. "dashboard refreshes every X minutes"]
 
----
+## Tech stack
+| Area | Tools |
+|---|---|
+| Dashboard | Oracle APEX |
+| Data access | Oracle REST Data Services (ORDS), REST APIs, JSON |
+| Data processing | SQL, PL/SQL |
+| Automation | PowerShell |
+| Front end | HTML, CSS, JavaScript |
 
-## Project Structure
+## Skills demonstrated
+SQL and PL/SQL, REST APIs and JSON, data automation, KPI dashboard design, data reporting
 
-/apex → Oracle APEX application exports  
-/json → Sample JSON data files  
-/scripts → PowerShell automation scripts  
-/screenshots → Application screenshots  
-
----
-
-## Purpose
-
-This project was developed as an industrial monitoring solution for extrusion production environments to visualize live operational data in a clean and efficient dashboard interface.
-
----
-
-## Author
-
-Developed by Aashika
-
+## Project structure
+[Keep the Project Structure section from your current README here]
