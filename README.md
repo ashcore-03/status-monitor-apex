@@ -1,59 +1,103 @@
-# Production Status Monitor (Oracle APEX)
+# Status Monitor – Real-Time Production Dashboard (Oracle APEX)
 
-A real-time operational dashboard that turns live production-line data (JSON over REST APIs) into KPIs: extrusion status, quantity produced, shift-wise throughput (KG/HR) and production history. Built for plant-floor staff on desktop and mobile.
+## Overview
+Status Monitor is a real-time industrial production monitoring web application built with Oracle APEX. It turns live extrusion production data into a dashboard of operational metrics: machine status, production quantity, shift performance (KG/HR) and production history.
 
-Built during my internship at Hindalco Industries (Aditya Birla Group).
+The application integrates JSON-based live data feeds with Oracle REST APIs (ORDS) and PowerShell automation scripts, so the dashboard updates continuously without manual data entry.
 
-## The problem
-Production data was updated through manual entry, so dashboards lagged behind what was actually happening on the line. The goal was a dashboard that always reflects current data without anyone updating it by hand.
+---
 
-## KPIs and metrics tracked
+## Key Metrics Tracked
+
 | Metric | What it shows |
 |---|---|
-| Live extrusion status | Current state of each production line |
-| Production quantity | Output tracked across the day |
-| Throughput (KG/HR) by shift | Shift-wise productivity |
-| Production history | Past output for trend review |
+| Live extrusion status | Current state of production |
+| Production quantity | Output tracked in real time |
+| Shift KG/HR | Shift-wise throughput |
+| Production history | Past output for review |
 
-## Data flow
+---
+
+## Data Flow
+
 ```
-Production data (JSON feed)
+Live JSON production data
         |
         v
-REST API (Oracle REST Data Services)
+PowerShell script (scheduled refresh)
         |
         v
-SQL / PL-SQL  (parse, transform, aggregate)
+Oracle REST APIs (ORDS)
         |
         v
-Oracle APEX dashboards (auto-refresh, desktop + mobile)
-
-PowerShell scheduled script keeps the data refreshed
+SQL / PL-SQL (data handling)
+        |
+        v
+Oracle APEX dashboard (auto-refreshing, desktop + mobile)
 ```
 
-## Data and SQL highlights
-- Integrated live JSON data through REST APIs using Oracle ORDS
-- Used SQL / PL-SQL to process and aggregate production data for the dashboard
-- Automated recurring data updates with scheduled PowerShell scripts, replacing manual entry
-- Designed a responsive, auto-refreshing dashboard with a dark mode UI
-- [Add one measurable detail, e.g. number of lines monitored, refresh interval, or users]
+---
 
-## Impact
-- Removed manual data entry from the update process
-- Gave plant-floor staff live visibility of production from any device
-- [Add a real result if you have one, e.g. "dashboard refreshes every X minutes"]
+## Data & Analytics Highlights
 
-## Tech stack
+- Integrated live JSON data through REST APIs using Oracle REST Data Services (ORDS)
+- Used SQL / PL-SQL for data handling behind the dashboard
+- Automated recurring data updates with PowerShell, replacing manual entry
+- Built an auto-refreshing KPI dashboard with production history views
+- Designed a responsive, mobile-friendly interface with a dark mode UI
+
+---
+
+## Features
+
+- Real-time production monitoring
+- Live extrusion status dashboard
+- REST API integration using ORDS
+- JSON data handling and automation
+- Auto-refreshing dashboard
+- Production quantity tracking
+- Shift KG/HR monitoring
+- Production history display
+- Dark mode UI
+- Mobile-friendly web app
+
+---
+
+## Technologies Used
+
 | Area | Tools |
 |---|---|
 | Dashboard | Oracle APEX |
 | Data access | Oracle REST Data Services (ORDS), REST APIs, JSON |
-| Data processing | SQL, PL/SQL |
+| Data handling | SQL, PL/SQL |
 | Automation | PowerShell |
 | Front end | HTML, CSS, JavaScript |
 
-## Skills demonstrated
-SQL and PL/SQL, REST APIs and JSON, data automation, KPI dashboard design, data reporting
+---
 
-## Project structure
-[Keep the Project Structure section from your current README here]
+## Project Structure
+
+```
+/apex          → Oracle APEX application exports
+/json          → Sample JSON data files
+/scripts       → PowerShell automation scripts
+/screenshots   → Application screenshots
+```
+
+---
+
+## Purpose
+
+This project was developed as an industrial monitoring solution for extrusion production environments, to visualize live operational data in a clean and efficient dashboard interface.
+
+---
+
+## Skills Demonstrated
+
+SQL and PL/SQL, REST APIs and JSON, data automation, KPI dashboard design, operational reporting
+
+---
+
+## Author
+
+Developed by Aashika Anil N | [GitHub](https://github.com/ashcore-03)
